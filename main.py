@@ -1,3 +1,5 @@
+# QualityLab_1 - task management application
+
 from task_service import TaskService
 from user_service import UserService
 from report_service import ReportService
