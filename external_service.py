@@ -1,16 +1,56 @@
+import logging
+import time
+
 import requests
 
 
 EXTERNAL_SERVICE_URL = "http://127.0.0.1:5001/external/status"
 
+MAX_ATTEMPTS = 3
+REQUEST_TIMEOUT = 2
+BACKOFF_SECONDS = 0.2
+
+logger = logging.getLogger(__name__)
+
 
 def get_external_status(mode="normal"):
-    response = requests.get(
-        EXTERNAL_SERVICE_URL,
-        params={"mode": mode},
-        timeout=2
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        try:
+            response = requests.get(
+                EXTERNAL_SERVICE_URL,
+                params={"mode": mode},
+                timeout=REQUEST_TIMEOUT
+            )
+
+            response.raise_for_status()
+
+            data = response.json()
+            data["attempts"] = attempt
+            data["degraded"] = False
+
+            return data
+
+        except requests.RequestException as error:
+            logger.warning(
+                "External service request failed. "
+                "Attempt %s/%s. Error: %s",
+                attempt,
+                MAX_ATTEMPTS,
+                error
+            )
+
+            if attempt < MAX_ATTEMPTS:
+                time.sleep(BACKOFF_SECONDS * attempt)
+
+    logger.error(
+        "External service is unavailable. "
+        "Fallback response is used."
     )
 
-    response.raise_for_status()
-
-    return response.json()
+    return {
+        "status": "degraded",
+        "source": "fallback",
+        "message": "External service temporarily unavailable",
+        "attempts": MAX_ATTEMPTS,
+        "degraded": True
+    }
