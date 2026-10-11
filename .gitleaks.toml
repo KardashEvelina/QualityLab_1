@@ -1,0 +1,5 @@
+[[rules]]
+id = "synthetic-test-secret"
+description = "Synthetic secret for laboratory testing"
+regex = '''LAB_SECRET_[A-Z0-9]{24}'''
+keywords = ["LAB_SECRET_"]
