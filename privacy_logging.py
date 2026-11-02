@@ -53,6 +53,31 @@ def sanitize_value(key, value):
     if normalized_key == "phone":
         return mask_phone(value)
 
+    # Контрольоване розширення для FAIL-стану ЛР6
+    if normalized_key == "audit_region":
+        return str(value).upper()
+
+    if normalized_key == "audit_tier":
+        return str(value).lower()
+
+    if normalized_key == "audit_channel":
+        return str(value).lower()
+
+    if normalized_key == "audit_zone":
+        return str(value).strip()
+
+    if normalized_key == "audit_group":
+        return str(value).lower()
+
+    if normalized_key == "audit_mode":
+        return str(value).lower()
+
+    if normalized_key == "audit_level":
+        return str(value).upper()
+
+    if normalized_key == "audit_scope":
+        return str(value).strip()
+
     if isinstance(value, dict):
         return sanitize_mapping(value)
 
@@ -65,7 +90,6 @@ def sanitize_value(key, value):
         ]
 
     return value
-
 
 def sanitize_mapping(data):
     return {
