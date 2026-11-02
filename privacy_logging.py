@@ -41,55 +41,25 @@ def mask_phone(value):
     return f"***{digits[-4:]}"
 
 
-def sanitize_value(key, value):
-    normalized_key = key.lower()
-
-    if normalized_key in SENSITIVE_KEYS:
-        return "[REDACTED]"
-
-    if normalized_key == "email":
-        return mask_email(value)
-
-    if normalized_key == "phone":
-        return mask_phone(value)
-
-    # Контрольоване розширення для FAIL-стану ЛР6
-    if normalized_key == "audit_region":
-        return str(value).upper()
-
-    if normalized_key == "audit_tier":
-        return str(value).lower()
-
-    if normalized_key == "audit_channel":
-        return str(value).lower()
-
-    if normalized_key == "audit_zone":
-        return str(value).strip()
-
-    if normalized_key == "audit_group":
-        return str(value).lower()
-
-    if normalized_key == "audit_mode":
-        return str(value).lower()
-
-    if normalized_key == "audit_level":
-        return str(value).upper()
-
-    if normalized_key == "audit_scope":
-        return str(value).strip()
-
-    if isinstance(value, dict):
-        return sanitize_mapping(value)
-
-    if isinstance(value, list):
-        return [
-            sanitize_mapping(item)
-            if isinstance(item, dict)
-            else item
-            for item in value
-        ]
-
+def _identity(value):
     return value
+
+
+def _redact(value):
+    return "[REDACTED]"
+
+
+def _upper_text(value):
+    return str(value).upper()
+
+
+def _lower_text(value):
+    return str(value).lower()
+
+
+def _strip_text(value):
+    return str(value).strip()
+
 
 def sanitize_mapping(data):
     return {
@@ -97,6 +67,57 @@ def sanitize_mapping(data):
         for key, value in data.items()
     }
 
+
+def _sanitize_list(values):
+    item_handlers = {
+        dict: sanitize_mapping,
+    }
+
+    return [
+        item_handlers.get(
+            type(item),
+            _identity
+        )(item)
+        for item in values
+    ]
+
+
+KEY_HANDLERS = {
+    **{
+        key: _redact
+        for key in SENSITIVE_KEYS
+    },
+    "email": mask_email,
+    "phone": mask_phone,
+    "audit_region": _upper_text,
+    "audit_tier": _lower_text,
+    "audit_channel": _lower_text,
+    "audit_zone": _strip_text,
+    "audit_group": _lower_text,
+    "audit_mode": _lower_text,
+    "audit_level": _upper_text,
+    "audit_scope": _strip_text,
+}
+
+
+TYPE_HANDLERS = {
+    dict: sanitize_mapping,
+    list: _sanitize_list,
+}
+
+
+def sanitize_value(key, value):
+    normalized_key = key.lower()
+
+    handler = KEY_HANDLERS.get(
+        normalized_key,
+        TYPE_HANDLERS.get(
+            type(value),
+            _identity
+        )
+    )
+
+    return handler(value)
 
 def sanitize_text(message):
     message = re.sub(
