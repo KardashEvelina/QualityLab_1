@@ -7,3 +7,10 @@ __pycache__/
 .coverage
 coverage.xml
 .env
+
+# Lab 5 generated files
+mutants/
+coverage.json
+.coverage
+.pytest_cache/
+__pycache__/
