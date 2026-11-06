@@ -1,0 +1,10 @@
+===== INHERITANCE FRAGILITY CRASH =====
+BasePlanningService: FAIL
+  BasePlanningService.create_plan() missing 1 required positional argument: 'plan_mode'
+ManagedPlanningService: FAIL
+  BasePlanningService.create_plan() missing 1 required positional argument: 'plan_mode'
+AdaptivePlanningService: FAIL
+  BasePlanningService.create_plan() missing 1 required positional argument: 'plan_mode'
+
+Broken hierarchy levels: 3/3
+STATUS: INHERITANCE FRAGILITY FAIL

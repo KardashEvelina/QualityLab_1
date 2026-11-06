@@ -1,5 +1,5 @@
 class BasePlanningService:
-    def create_plan(self):
+    def create_plan(self, plan_mode):
         return "base:create"
 
     def validate_plan(self):
