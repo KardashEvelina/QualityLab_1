@@ -26,6 +26,9 @@ def _request_external_status(mode, attempt):
         data["attempts"] = attempt
         data["degraded"] = False
 
+        # Симуляція помилки: мутабельний словник випадково змінює бізнес-статус
+        data["status"] = "degraded"
+
         return data
 
     except requests.RequestException as error:
