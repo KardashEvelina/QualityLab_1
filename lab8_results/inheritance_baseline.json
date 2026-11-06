@@ -1,0 +1,50 @@
+[
+  {
+    "class": "BasePlanningService",
+    "DIT": 1,
+    "PIM": 8,
+    "own_public_methods": 8,
+    "overridden_methods": 0,
+    "overridden_names": [],
+    "inheritance_chain": [
+      "BasePlanningService"
+    ]
+  },
+  {
+    "class": "ManagedPlanningService",
+    "DIT": 2,
+    "PIM": 16,
+    "own_public_methods": 12,
+    "overridden_methods": 4,
+    "overridden_names": [
+      "calculate_capacity",
+      "prioritize_tasks",
+      "schedule_tasks",
+      "validate_plan"
+    ],
+    "inheritance_chain": [
+      "ManagedPlanningService",
+      "BasePlanningService"
+    ]
+  },
+  {
+    "class": "AdaptivePlanningService",
+    "DIT": 3,
+    "PIM": 24,
+    "own_public_methods": 14,
+    "overridden_methods": 6,
+    "overridden_names": [
+      "calculate_capacity",
+      "detect_conflicts",
+      "prioritize_tasks",
+      "schedule_tasks",
+      "update_deadlines",
+      "validate_plan"
+    ],
+    "inheritance_chain": [
+      "AdaptivePlanningService",
+      "ManagedPlanningService",
+      "BasePlanningService"
+    ]
+  }
+]
