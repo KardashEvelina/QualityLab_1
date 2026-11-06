@@ -1,0 +1,48 @@
+[
+  {
+    "role": "Core Domain",
+    "file": "consent_service.py",
+    "complexity": 25,
+    "classes": [
+      {
+        "class": "ConsentService",
+        "CBO": 3,
+        "dependencies": [
+          "copy.deepcopy",
+          "datetime.datetime",
+          "datetime.timezone"
+        ],
+        "LCOM4": 1
+      }
+    ]
+  },
+  {
+    "role": "Infrastructure",
+    "file": "privacy_logging.py",
+    "complexity": 20,
+    "classes": [
+      {
+        "class": "PrivacyLogFilter",
+        "CBO": 2,
+        "dependencies": [
+          "json",
+          "logging"
+        ],
+        "LCOM4": 1
+      }
+    ]
+  },
+  {
+    "role": "Utility/DTO",
+    "file": "report_service.py",
+    "complexity": 8,
+    "classes": [
+      {
+        "class": "ReportService",
+        "CBO": 0,
+        "dependencies": [],
+        "LCOM4": 2
+      }
+    ]
+  }
+]
