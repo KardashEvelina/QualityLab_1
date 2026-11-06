@@ -1,0 +1,13 @@
+lab8_pass_architecture.py
+    C 12:0 RegistrationCoordinator - A (2)
+    C 59:0 ReportingCoordinator - A (2)
+    C 89:0 PrivacyCoordinator - A (2)
+    C 141:0 AuditCoordinator - A (2)
+    M 13:4 RegistrationCoordinator.__init__ - A (1)
+    M 23:4 RegistrationCoordinator.register - A (1)
+    M 60:4 ReportingCoordinator.__init__ - A (1)
+    M 70:4 ReportingCoordinator.build_report - A (1)
+    M 90:4 PrivacyCoordinator.__init__ - A (1)
+    M 100:4 PrivacyCoordinator.process_user_privacy - A (1)
+    M 142:4 AuditCoordinator.__init__ - A (1)
+    M 156:4 AuditCoordinator.check_external_status - A (1)

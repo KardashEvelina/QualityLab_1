@@ -1,0 +1,45 @@
+[
+  {
+    "class": "RegistrationCoordinator",
+    "CBO": 3,
+    "dependencies": [
+      "lab8_contracts.AuditPort",
+      "lab8_contracts.TaskPort",
+      "lab8_contracts.UserPort"
+    ],
+    "LCOM4_components": 1,
+    "LCOM_normalized": 0.0
+  },
+  {
+    "class": "ReportingCoordinator",
+    "CBO": 3,
+    "dependencies": [
+      "lab8_contracts.AuditPort",
+      "lab8_contracts.ReportPort",
+      "lab8_contracts.TaskPort"
+    ],
+    "LCOM4_components": 1,
+    "LCOM_normalized": 0.0
+  },
+  {
+    "class": "PrivacyCoordinator",
+    "CBO": 3,
+    "dependencies": [
+      "lab8_contracts.AuditPort",
+      "lab8_contracts.ConsentPort",
+      "lab8_contracts.PrivacyPort"
+    ],
+    "LCOM4_components": 1,
+    "LCOM_normalized": 0.0
+  },
+  {
+    "class": "AuditCoordinator",
+    "CBO": 2,
+    "dependencies": [
+      "lab8_contracts.AuditPort",
+      "lab8_contracts.ExternalStatusPort"
+    ],
+    "LCOM4_components": 1,
+    "LCOM_normalized": 0.0
+  }
+]
