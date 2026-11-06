@@ -1,0 +1,101 @@
+{
+  "methodology": {
+    "language": "Python",
+    "MHF": "methods starting with _ are treated as hidden; dunder methods excluded",
+    "AHF": "self attributes starting with _ are treated as hidden",
+    "COF": "directed class references / N*(N-1)"
+  },
+  "files_analyzed": [
+    "app.py",
+    "consent_service.py",
+    "external_service.py",
+    "lab8_adapters.py",
+    "lab8_composition.py",
+    "lab8_contracts.py",
+    "lab8_pass_architecture.py",
+    "main.py",
+    "mock_service.py",
+    "privacy_data_service.py",
+    "privacy_logging.py",
+    "report_service.py",
+    "task_service.py",
+    "user_service.py"
+  ],
+  "class_count": 29,
+  "methods": {
+    "total": 82,
+    "hidden": 4
+  },
+  "attributes": {
+    "total": 43,
+    "hidden": 7
+  },
+  "coupling": {
+    "actual_edges": 19,
+    "possible_edges": 812
+  },
+  "MHF_percent": 4.88,
+  "AHF_percent": 16.28,
+  "COF_percent": 2.34,
+  "coupling_edges": {
+    "consent_service.py:ConsentService": [],
+    "external_service.py:ExternalRequest": [],
+    "external_service.py:ExternalStatus": [],
+    "lab8_adapters.py:UserServiceAdapter": [
+      "UserService"
+    ],
+    "lab8_adapters.py:TaskServiceAdapter": [
+      "TaskService"
+    ],
+    "lab8_adapters.py:ReportServiceAdapter": [
+      "ReportService"
+    ],
+    "lab8_adapters.py:ConsentServiceAdapter": [
+      "ConsentService"
+    ],
+    "lab8_adapters.py:PrivacyDataAdapter": [
+      "PrivacyDataService"
+    ],
+    "lab8_adapters.py:AuditLogAdapter": [],
+    "lab8_adapters.py:ExternalStatusAdapter": [],
+    "lab8_composition.py:PlanningCore": [],
+    "lab8_composition.py:ManagedPlanningService": [
+      "PlanningCore"
+    ],
+    "lab8_composition.py:AdaptivePlanningService": [
+      "ManagedPlanningService",
+      "PlanningCore"
+    ],
+    "lab8_contracts.py:UserPort": [],
+    "lab8_contracts.py:TaskPort": [],
+    "lab8_contracts.py:ReportPort": [],
+    "lab8_contracts.py:ConsentPort": [],
+    "lab8_contracts.py:PrivacyPort": [],
+    "lab8_contracts.py:AuditPort": [],
+    "lab8_contracts.py:ExternalStatusPort": [],
+    "lab8_pass_architecture.py:RegistrationCoordinator": [
+      "AuditPort",
+      "TaskPort",
+      "UserPort"
+    ],
+    "lab8_pass_architecture.py:ReportingCoordinator": [
+      "AuditPort",
+      "ReportPort",
+      "TaskPort"
+    ],
+    "lab8_pass_architecture.py:PrivacyCoordinator": [
+      "AuditPort",
+      "ConsentPort",
+      "PrivacyPort"
+    ],
+    "lab8_pass_architecture.py:AuditCoordinator": [
+      "AuditPort",
+      "ExternalStatusPort"
+    ],
+    "privacy_data_service.py:PrivacyDataService": [],
+    "privacy_logging.py:PrivacyLogFilter": [],
+    "report_service.py:ReportService": [],
+    "task_service.py:TaskService": [],
+    "user_service.py:UserService": []
+  }
+}

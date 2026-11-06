@@ -1,0 +1,3 @@
+Requested: MHF, AHF, COF
+Found in Sonar: none
+STATUS: MOOD KEYS NOT EXPOSED BY SONAR CLOUD
