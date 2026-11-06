@@ -1,0 +1,79 @@
+name: Lab 7 Quality Metrics
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality-metrics:
+    runs-on: ubuntu-latest
+
+    container:
+      image: python:3.12-slim
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Install Radon
+        run: |
+          python -m pip install --upgrade pip
+          pip install radon==6.0.1
+
+      - name: Run repository complexity scan
+        run: |
+          mkdir -p reports
+
+          radon cc . -j \
+            -e ".venv/*,mutants/*,lab5_results/*" \
+            > reports/radon-cc.json
+
+          radon hal . -j \
+            -e ".venv/*,mutants/*,lab5_results/*" \
+            > reports/radon-halstead.json
+
+      - name: Build combined JSON report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          reports = Path("reports")
+
+          with open(reports / "radon-cc.json") as file:
+              cc = json.load(file)
+
+          with open(reports / "radon-halstead.json") as file:
+              halstead = json.load(file)
+
+          combined = {
+              "tool": "Radon",
+              "version": "6.0.1",
+              "cyclomatic_complexity": cc,
+              "halstead": halstead,
+          }
+
+          with open(
+              reports / "quality-metrics.json",
+              "w",
+              encoding="utf-8"
+          ) as file:
+              json.dump(
+                  combined,
+                  file,
+                  indent=2,
+                  ensure_ascii=False
+              )
+          PY
+
+      - name: Validate JSON report
+        run: |
+          python -m json.tool reports/quality-metrics.json > /dev/null
+          echo "QUALITY METRICS JSON: PASS"
+
+      - name: Upload quality report
+        uses: actions/upload-artifact@v7
+        with:
+          name: lab7-quality-metrics
+          path: reports/quality-metrics.json
+          retention-days: 30
