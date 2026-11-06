@@ -1,0 +1,20 @@
+[
+  {
+    "class": "PlanningCore",
+    "DIT": 1,
+    "PIM": 8,
+    "Overridden": 0
+  },
+  {
+    "class": "ManagedPlanningService",
+    "DIT": 1,
+    "PIM": 11,
+    "Overridden": 0
+  },
+  {
+    "class": "AdaptivePlanningService",
+    "DIT": 1,
+    "PIM": 15,
+    "Overridden": 0
+  }
+]
