@@ -1,0 +1,9 @@
+===== SHOTGUN SURGERY FAIL =====
+Traceback (most recent call last):
+  File "/Users/evelinakardas/PycharmProjects/QualityLab_1/lab8_fail_demo.py", line 17, in <module>
+    print(god.build_task_report())
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/evelinakardas/PycharmProjects/QualityLab_1/lab8_god_object.py", line 111, in build_task_report
+    .generate_task_report(
+     ^^^^^^^^^^^^^^^^^^^^^
+TypeError: ReportService.generate_task_report() missing 1 required positional argument: 'report_format'

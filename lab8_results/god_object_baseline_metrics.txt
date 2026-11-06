@@ -1,0 +1,25 @@
+===== GOD OBJECT COUPLING =====
+Class: Lab8GodObject
+CBO = 19
+
+- consent_service.ConsentService
+- copy.deepcopy
+- datetime.datetime
+- datetime.timezone
+- external_service.ExternalRequest
+- external_service.ExternalStatus
+- external_service.get_external_status
+- hashlib
+- json
+- logging
+- pathlib.Path
+- privacy_data_service.PrivacyDataService
+- privacy_logging.configure_privacy_logging
+- privacy_logging.sanitize_mapping
+- privacy_logging.sanitize_text
+- report_service.ReportService
+- task_service.TaskService
+- user_service.UserService
+- uuid
+
+STATUS: CRITICAL GOD OBJECT (CBO > 15)

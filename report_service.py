@@ -1,5 +1,5 @@
 class ReportService:
-    def generate_task_report(self, tasks):
+    def generate_task_report(self, tasks, report_format):
         total = len(tasks)
         completed = 0
         high_priority = 0
