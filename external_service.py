@@ -1,7 +1,9 @@
 import logging
 import time
+from dataclasses import dataclass
 
 import requests
+
 
 EXTERNAL_SERVICE_URL = "http://127.0.0.1:5001/external/status"
 
@@ -12,32 +14,71 @@ BACKOFF_SECONDS = 0.2
 logger = logging.getLogger(__name__)
 
 
-def _request_external_status(mode, attempt):
-    try:
-        response = requests.get(
-            EXTERNAL_SERVICE_URL,
-            params={"mode": mode},
-            timeout=REQUEST_TIMEOUT
-        )
+@dataclass(frozen=True, slots=True)
+class ExternalRequest:
+    """Незмінний Value Object параметрів зовнішнього запиту."""
 
+    mode: str
+    attempt: int
+    url: str = EXTERNAL_SERVICE_URL
+    timeout: int = REQUEST_TIMEOUT
+    max_attempts: int = MAX_ATTEMPTS
+
+
+@dataclass(frozen=True, slots=True)
+class ExternalStatus:
+    """Незмінний Value Object результату зовнішнього сервісу."""
+
+    status: str
+    source: str
+    attempts: int
+    degraded: bool
+
+    @classmethod
+    def from_http_response(cls, response, attempt):
         response.raise_for_status()
 
-        data = response.json()
-        data["attempts"] = attempt
-        data["degraded"] = False
+        payload = response.json()
 
-        # Симуляція помилки: мутабельний словник випадково змінює бізнес-статус
-        data["status"] = "degraded"
+        return cls(
+            status=payload["status"],
+            source=payload["source"],
+            attempts=attempt,
+            degraded=False,
+        )
 
-        return data
+    def to_dict(self):
+        return {
+            "status": self.status,
+            "source": self.source,
+            "attempts": self.attempts,
+            "degraded": self.degraded,
+        }
+
+
+def _request_external_status(mode, attempt):
+    request = ExternalRequest(
+        mode=mode,
+        attempt=attempt,
+    )
+
+    try:
+        return ExternalStatus.from_http_response(
+            response=requests.get(
+                request.url,
+                params={"mode": request.mode},
+                timeout=request.timeout,
+            ),
+            attempt=request.attempt,
+        ).to_dict()
 
     except requests.RequestException as error:
         logger.warning(
             "External service request failed. "
             "Attempt %s/%s. Error: %s",
-            attempt,
-            MAX_ATTEMPTS,
-            error
+            request.attempt,
+            request.max_attempts,
+            error,
         )
 
         return None
@@ -59,13 +100,16 @@ def _fallback_response():
         "source": "fallback",
         "message": "External service temporarily unavailable",
         "attempts": MAX_ATTEMPTS,
-        "degraded": True
+        "degraded": True,
     }
 
 
 def get_external_status(mode="normal"):
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        result = _request_external_status(mode, attempt)
+        result = _request_external_status(
+            mode,
+            attempt,
+        )
 
         if result is not None:
             return result
