@@ -116,3 +116,13 @@ STATUS: PROJECT DOCUMENTATION ENTRY POINT
 
 Приклад відповіді:
 {"service":"QualityLab_1","api_version":"2.0","status":"active"}
+
+## Documentation Definition of Done
+
+| Контроль | Інструмент |
+|---|---|
+| API-контракти | Spectral |
+| Markdown | markdownlint |
+| Посилання і навігація | mkdocs build --strict |
+| Актуальність | review_date |
+| API-довідка | Swagger UI |

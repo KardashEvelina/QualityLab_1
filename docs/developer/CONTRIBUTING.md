@@ -39,3 +39,16 @@ STATUS: published
 - [[../architecture/adr/ADR-0001-python-flask|ADR-0001]]
 
 #architecture #api #ops
+
+## Definition of Done — docs-or-don't-merge
+
+Pull Request, що змінює публічну поведінку системи, не повинен об'єднуватися без оновлення документації.
+
+- [ ] Код і тести оновлено.
+- [ ] docs/ оновлено.
+- [ ] OpenAPI оновлено при зміні API.
+- [ ] CHANGELOG оновлено для публічних змін.
+- [ ] Spectral проходить без errors.
+- [ ] markdownlint проходить.
+- [ ] mkdocs build --strict проходить.
+- [ ] review_date не прострочено.

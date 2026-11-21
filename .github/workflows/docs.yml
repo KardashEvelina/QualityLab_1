@@ -1,0 +1,30 @@
+name: Documentation CI/CD
+
+trigger:
+- push
+- pull_request
+
+permissions:
+- contents: read
+- pages: write
+- id-token: write
+
+BUILD job:
+1. checkout
+2. setup Python 3.12
+3. install:
+   mkdocs-material
+   mkdocs-mermaid2-plugin
+   mkdocs-git-revision-date-localized-plugin
+   mkdocs-swagger-ui-tag
+4. install markdownlint-cli
+5. install Spectral
+6. markdownlint README.md docs/**/*.md
+7. spectral lint docs/api/openapi.yaml
+8. python scripts/check_review_dates.py
+9. mkdocs build --strict
+10. upload GitHub Pages artifact
+
+DEPLOY job:
+- needs build
+- deploy GitHub Pages
