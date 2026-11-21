@@ -1,0 +1,47 @@
+===== SendMessage =====
+90fbd9098 | 2023-04-13 | Matt Pavlovich | [AMQ-9239] jakarta.jms - activemq-web-console, activemq-web-demo, activemq-web changes
+b0bf0a259 | 2012-09-18 | Claus Ibsen | Polished
+7557f0cfa | 2011-08-15 | Timothy A. Bish | apply patch for: https://issues.apache.org/jira/browse/AMQ-1540
+0bbc0acb8 | 2011-02-16 | Hiram R. Chirino | Removing svn keywords, they don't have much value and just add additional noise when diffing source trees.
+2895197d0 | 2010-04-07 | Bosanac Dejan | https://issues.apache.org/activemq/browse/AMQ-2613 - more web console sanitation
+9dc43f3ff | 2010-02-23 | Bosanac Dejan | https://issues.apache.org/activemq/browse/AMQ-2613 - prevent CSRF attacks
+57b16b1c3 | 2010-02-11 | Robert Davies | Added cron support for scheduled delivery - this is further enhancements for https://issues.apache.org/activemq/browse/AMQ-451
+540dd5c98 | 2007-08-12 | Hiram R. Chirino | Last set of checkstyle violation fixes
+5f1adbe89 | 2007-08-11 | Hiram R. Chirino | More checkstyle fixes
+87f75b2de | 2007-05-24 | James Strachan | applied patch for AMQ-1241 to allow the web console to be run against an embedded, invm, properties or remote broker. Many thanks to Mario Siegenthaler for the patch!
+
+===== DestinationFacade =====
+90fbd9098 | 2023-04-13 | Matt Pavlovich | [AMQ-9239] jakarta.jms - activemq-web-console, activemq-web-demo, activemq-web changes
+3321f9964 | 2014-02-05 | Daniel Kulp | [AMQ-4174] Redirect back to queue overview after delete/moving message Patch from Robert Balent applied
+33f9f2968 | 2012-02-10 | Timothy A. Bish | fix for: https://issues.apache.org/jira/browse/AMQ-1899
+7557f0cfa | 2011-08-15 | Timothy A. Bish | apply patch for: https://issues.apache.org/jira/browse/AMQ-1540
+0bbc0acb8 | 2011-02-16 | Hiram R. Chirino | Removing svn keywords, they don't have much value and just add additional noise when diffing source trees.
+9dc43f3ff | 2010-02-23 | Bosanac Dejan | https://issues.apache.org/activemq/browse/AMQ-2613 - prevent CSRF attacks
+a3eb32770 | 2008-09-30 | Bosanac Dejan | patch for AMQ-1326 applied (with a few more code improvements)
+508128e3e | 2008-04-09 | James Strachan | updated to the latest/greatest jetty & sl4j along with patching the web console so it works again :)
+5a5056e73 | 2007-08-23 | James Strachan | moved the web helper classes to activemq-web so that they are reusable in other web apps easily
+540dd5c98 | 2007-08-12 | Hiram R. Chirino | Last set of checkstyle violation fixes
+
+===== WebClient =====
+52bef00e5 | 2026-04-14 | Matt Pavlovich | [#1911] Update resource cleanup on queueBrowse servlet (#1912)
+33ceb9fe8 | 2023-10-07 | Matt Pavlovich | [AMQ-9235] Convert activemq-web to use j.util.Base64
+90fbd9098 | 2023-04-13 | Matt Pavlovich | [AMQ-9239] jakarta.jms - activemq-web-console, activemq-web-demo, activemq-web changes
+3ba93ed95 | 2017-05-29 | sigee | Remove unnecessary boxing / unboxing
+7fe862caf | 2016-11-29 | Claus Ibsen | AMQ-5654 Allow ActiveMQ authentication on server side for REST/Ajax clients. Thanks to Geert Pante for the patch. This fixes #70.
+062adbbe7 | 2013-09-20 | Timothy Bish | fix for: https://issues.apache.org/jira/browse/AMQ-4059
+0507ad380 | 2013-03-29 | Bosanac Dejan | https://issues.apache.org/jira/browse/AMQ-4418 - refactor web demo to be war that can be ran in karaf
+76153ff24 | 2012-10-16 | Bosanac Dejan | https://issues.apache.org/jira/browse/AMQ-4110 - web console sending messages to the secured broker - use default credentials defined in factory if not explicitly set
+d4742f597 | 2012-07-12 | Bosanac Dejan | https://issues.apache.org/jira/browse/AMQ-3924 - connect REST API to secure broker
+40ae055f3 | 2011-06-22 | Bosanac Dejan | https://issues.apache.org/jira/browse/AMQ-3374 - first stab at fixing long kahadb tx oom problem
+
+===== CreateDestination =====
+90fbd9098 | 2023-04-13 | Matt Pavlovich | [AMQ-9239] jakarta.jms - activemq-web-console, activemq-web-demo, activemq-web changes
+0bbc0acb8 | 2011-02-16 | Hiram R. Chirino | Removing svn keywords, they don't have much value and just add additional noise when diffing source trees.
+9dc43f3ff | 2010-02-23 | Bosanac Dejan | https://issues.apache.org/activemq/browse/AMQ-2613 - prevent CSRF attacks
+540dd5c98 | 2007-08-12 | Hiram R. Chirino | Last set of checkstyle violation fixes
+5f1adbe89 | 2007-08-11 | Hiram R. Chirino | More checkstyle fixes
+8a5e197cb | 2007-02-06 | James Strachan | refactor the code to make it easy to support non-local brokers such as for connecting via JMX to a remote broker
+57b494132 | 2006-07-28 | Hiram R. Chirino | Applied new source header boiler plate per http://www.apache.org/legal/src-headers.html
+90b66ce62 | 2006-04-26 | James Strachan | Initial import of a simple web based console for ActiveMQ
+48b486947 | 2005-12-29 | Hiram R. Chirino | Updated copyright headers to be (c) 2005-2006
+d29ca2a71 | 2005-12-28 | Hiram R. Chirino | Refactor org.activemq -> org.apache.activemq
