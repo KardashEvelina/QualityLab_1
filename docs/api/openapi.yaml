@@ -1,0 +1,247 @@
+openapi: 3.0.3
+
+info:
+  title: QualityLab_1 API
+  version: 2.0.0
+  description: >
+    API навчального проєкту QualityLab_1.
+    Специфікація описує реальні маршрути Flask-застосунку.
+
+servers:
+  - url: http://127.0.0.1:5000
+    description: Local development server
+
+paths:
+
+  /health:
+    get:
+      operationId: healthCheck
+      description: Перевірка доступності сервісу.
+      responses:
+        "200":
+          description: Сервіс працює.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+              example:
+                status: ok
+
+        "500":
+          description: Внутрішня помилка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /api/system/info:
+    get:
+      operationId: getSystemInfo
+      description: Повертає службову інформацію про систему та версію API.
+      responses:
+        "200":
+          description: Інформацію про систему успішно отримано.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SystemInfoResponse"
+              example:
+                service: QualityLab_1
+                api_version: "2.0"
+                status: active
+
+        "500":
+          description: Внутрішня помилка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /tasks/summary:
+    get:
+      operationId: getTaskSummary
+      description: >
+        Повертає агреговану інформацію про задачі
+        та стан зовнішнього сервісу.
+      parameters:
+        - name: mode
+          in: query
+          required: false
+          description: Режим запиту до зовнішнього сервісу.
+          schema:
+            type: string
+            default: normal
+            example: normal
+
+      responses:
+        "200":
+          description: Зведення по задачах успішно отримано.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskSummaryResponse"
+              example:
+                total_tasks: 3
+                completed_tasks: 0
+                high_priority_tasks: 2
+                external_status:
+                  status: degraded
+                  source: fallback
+                  attempts: 3
+                  degraded: true
+                  message: External service temporarily unavailable
+
+        "400":
+          description: Некоректний параметр запиту.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+        "500":
+          description: Внутрішня помилка сервера.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+
+  schemas:
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+          example: ok
+      example:
+        status: ok
+
+    SystemInfoResponse:
+      type: object
+      required:
+        - service
+        - api_version
+        - status
+      properties:
+        service:
+          type: string
+          example: QualityLab_1
+
+        api_version:
+          type: string
+          example: "2.0"
+
+        status:
+          type: string
+          enum:
+            - active
+          example: active
+
+      example:
+        service: QualityLab_1
+        api_version: "2.0"
+        status: active
+
+    ExternalStatus:
+      type: object
+      required:
+        - status
+        - source
+        - attempts
+        - degraded
+        - message
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+            - degraded
+          example: degraded
+
+        source:
+          type: string
+          enum:
+            - external
+            - fallback
+          example: fallback
+
+        attempts:
+          type: integer
+          minimum: 1
+          example: 3
+
+        degraded:
+          type: boolean
+          example: true
+
+        message:
+          type: string
+          example: External service temporarily unavailable
+
+      example:
+        status: degraded
+        source: fallback
+        attempts: 3
+        degraded: true
+        message: External service temporarily unavailable
+
+    TaskSummaryResponse:
+      type: object
+      required:
+        - total_tasks
+        - completed_tasks
+        - high_priority_tasks
+        - external_status
+      properties:
+        total_tasks:
+          type: integer
+          minimum: 0
+          example: 3
+
+        completed_tasks:
+          type: integer
+          minimum: 0
+          example: 0
+
+        high_priority_tasks:
+          type: integer
+          minimum: 0
+          example: 2
+
+        external_status:
+          $ref: "#/components/schemas/ExternalStatus"
+
+      example:
+        total_tasks: 3
+        completed_tasks: 0
+        high_priority_tasks: 2
+        external_status:
+          status: degraded
+          source: fallback
+          attempts: 3
+          degraded: true
+          message: External service temporarily unavailable
+
+    Error:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          example: bad_request
+
+        message:
+          type: string
+          example: Invalid request
+
+      example:
+        error: bad_request
+        message: Invalid request

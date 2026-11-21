@@ -1,0 +1,40 @@
+===== OPENAPI SDK GENERATION RESULT =====
+Generator: OpenAPI Generator 7.27.0
+Language: Python
+
+sdk-client/.gitignore
+sdk-client/.gitlab-ci.yml
+sdk-client/.openapi-generator-ignore
+sdk-client/.openapi-generator/FILES
+sdk-client/.openapi-generator/VERSION
+sdk-client/.travis.yml
+sdk-client/README.md
+sdk-client/docs/DefaultApi.md
+sdk-client/docs/Error.md
+sdk-client/docs/ExternalStatus.md
+sdk-client/docs/HealthResponse.md
+sdk-client/docs/SystemInfoResponse.md
+sdk-client/docs/TaskSummaryResponse.md
+sdk-client/git_push.sh
+sdk-client/openapi_client/__init__.py
+sdk-client/openapi_client/api_client.py
+sdk-client/openapi_client/api_response.py
+sdk-client/openapi_client/configuration.py
+sdk-client/openapi_client/exceptions.py
+sdk-client/openapi_client/py.typed
+sdk-client/openapi_client/rest.py
+sdk-client/pyproject.toml
+sdk-client/requirements.txt
+sdk-client/setup.cfg
+sdk-client/setup.py
+sdk-client/test-requirements.txt
+sdk-client/test/__init__.py
+sdk-client/test/test_default_api.py
+sdk-client/test/test_error.py
+sdk-client/test/test_external_status.py
+sdk-client/test/test_health_response.py
+sdk-client/test/test_system_info_response.py
+sdk-client/test/test_task_summary_response.py
+sdk-client/tox.ini
+
+STATUS: SDK GENERATED SUCCESSFULLY

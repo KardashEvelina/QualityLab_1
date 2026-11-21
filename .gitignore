@@ -14,3 +14,4 @@ coverage.json
 .coverage
 .pytest_cache/
 __pycache__/
+sdk-client/

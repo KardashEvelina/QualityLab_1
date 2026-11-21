@@ -6,6 +6,7 @@ theme:
   language: uk
 
 plugins:
+  - swagger-ui-tag
   - search
   - mermaid2
   - git-revision-date-localized:

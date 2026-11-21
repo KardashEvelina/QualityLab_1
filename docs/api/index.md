@@ -6,10 +6,6 @@ review_date: 2027-02-19
 
 # API Documentation
 
-Формальна OpenAPI-специфікація буде розміщена у цьому розділі.
+Інтерактивна документація API генерується безпосередньо з OpenAPI Specification.
 
-Основний контракт:
-
-- docs/api/openapi.yaml
-
-STATUS: draft
+<swagger-ui src="openapi.yaml"/>
