@@ -1,3 +1,9 @@
+---
+owner: DevOps Owner
+status: published
+review_date: 2027-02-19
+---
+
 # Infrastructure Specification Document (ISD)
 
 ## 1. Призначення документа
@@ -199,3 +205,12 @@ STATUS: ISD CREATED
 GET /api/system/info використовується для перевірки поточної версії сервісу та його активного стану.
 
 Поточна API version: 2.0.
+
+## Knowledge Links
+
+- [[sdd|SDD]]
+- [[adr/ADR-0001-python-flask|ADR-0001 — Python + Flask]]
+- [[adr/ADR-0002-in-memory-storage|ADR-0002 — In-Memory Storage]]
+- [[../developer/local-environment|Local Development Environment]]
+
+#architecture #ops

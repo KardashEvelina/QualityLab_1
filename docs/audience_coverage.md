@@ -1,3 +1,9 @@
+---
+owner: Documentation Owner
+status: published
+review_date: 2027-02-19
+---
+
 # Audience Coverage Matrix
 
 | Audience | Key question | Document | Status |

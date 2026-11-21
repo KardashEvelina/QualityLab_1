@@ -1,3 +1,9 @@
+---
+owner: System Architect
+status: published
+review_date: 2027-05-20
+---
+
 # ADR-001: Використання Python та Flask для Web API
 
 ## Status
@@ -51,3 +57,11 @@ QualityLab_1 є навчальним проєктом для лаборатор�
 - docs/isd.md
 
 STATUS: ADR ACCEPTED
+
+## Knowledge Links
+
+- [[../sdd|SDD]]
+- [[../isd|ISD]]
+- [[../../developer/coding-standards|Coding Standards]]
+
+#architecture

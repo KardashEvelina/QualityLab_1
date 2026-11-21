@@ -1,3 +1,9 @@
+---
+owner: Documentation Owner
+status: published
+review_date: 2027-02-19
+---
+
 # QualityLab_1
 
 QualityLab_1 — навчальний Python-проєкт для дослідження якості, надійності, приватності, архітектури та супроводу програмних систем.

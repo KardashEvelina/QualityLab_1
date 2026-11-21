@@ -1,3 +1,9 @@
+---
+owner: System Architect
+status: published
+review_date: 2027-05-20
+---
+
 # ADR-002: Використання In-Memory Storage у навчальному контурі
 
 ## Status
@@ -56,3 +62,11 @@ TaskService, PrivacyDataService та інші компоненти зберіг�
 - docs/isd.md
 
 STATUS: ADR ACCEPTED
+
+## Knowledge Links
+
+- [[../sdd|SDD]]
+- [[../isd|ISD]]
+- [[../../developer/CONTRIBUTING|Contributing]]
+
+#architecture #ops

@@ -1,0 +1,49 @@
+site_name: QualityLab_1 Knowledge Base
+site_description: Documentation as Code knowledge base for QualityLab_1
+
+theme:
+  name: material
+  language: uk
+
+plugins:
+  - search
+  - mermaid2
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: date
+      enable_git_follow: false
+
+nav:
+  - Home: index.md
+
+  - Level 1 - README:
+      - Project Overview: project-overview.md
+
+  - Level 2 - Developer Docs:
+      - Contributing: developer/CONTRIBUTING.md
+      - Local Environment: developer/local-environment.md
+      - Coding Standards: developer/coding-standards.md
+
+  - Level 3 - API Docs:
+      - API Overview: api/index.md
+
+  - Level 4 - Architecture Docs:
+      - SDD: architecture/sdd.md
+      - ISD: architecture/isd.md
+      - ADR:
+          - ADR-0001: architecture/adr/ADR-0001-python-flask.md
+          - ADR-0002: architecture/adr/ADR-0002-in-memory-storage.md
+
+  - Maintenance:
+      - Documentation Maintenance: maintenance.md
+      - Audience Coverage: audience_coverage.md
+      - Handover Package: handover.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom

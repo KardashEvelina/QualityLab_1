@@ -1,3 +1,9 @@
+---
+owner: Documentation Owner
+status: published
+review_date: 2027-02-19
+---
+
 # Documentation Maintenance Regime
 
 ## 1. Головне правило супроводу

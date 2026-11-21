@@ -1,3 +1,9 @@
+---
+owner: System Architect
+status: published
+review_date: 2027-05-20
+---
+
 # System Design Document (SDD)
 
 ## 1. Призначення системи
@@ -156,3 +162,12 @@ Response fields:
 - service;
 - api_version;
 - status.
+
+## Knowledge Links
+
+- [[isd|ISD]]
+- [[adr/ADR-0001-python-flask|ADR-0001 — Python + Flask]]
+- [[adr/ADR-0002-in-memory-storage|ADR-0002 — In-Memory Storage]]
+- [[../developer/CONTRIBUTING|Developer Contributing Guide]]
+
+#architecture #api
