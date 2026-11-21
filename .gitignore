@@ -15,3 +15,6 @@ coverage.json
 .pytest_cache/
 __pycache__/
 sdk-client/
+site/
+.obsidian/
+.idea/*.iml
