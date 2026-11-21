@@ -1,0 +1,15 @@
+.github/workflows/lab7-quality-metrics.yml|2026-11-06|15|1
+FINANCIAL_LEDGER.md|2026-11-21|0|1
+lab5_goodhart.md|2026-11-02|19|1
+lab5_gqm.md|2026-11-02|19|1
+lab6_cfg_baseline.md|2026-11-02|19|1
+lab6_cfg_extended.md|2026-11-02|19|1
+lab8_results/god_object_baseline_metrics.txt|2026-11-06|15|1
+lab8_results/mood_sonar_support.txt|2026-11-06|15|1
+lab8_results/pass_wmc.txt|2026-11-06|15|1
+lab9_results/FPA_UCP_WORKSHEET.md|2026-11-21|0|1
+lab9_results/SQALE_AUDIT_LEDGER.md|2026-11-21|0|1
+lab9_results/task3_git_history.txt|2026-11-21|0|1
+privacy_inventory.md|2026-10-11|41|1
+requirements.txt|2026-10-11|41|1
+requirements_lab5.txt|2026-11-02|19|1

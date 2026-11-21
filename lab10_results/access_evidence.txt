@@ -1,0 +1,25 @@
+
+--- FINANCIAL_LEDGER.md ---
+financial_simulator.py:7:LEDGER_FILE = Path("FINANCIAL_LEDGER.md")
+financial_simulator.py:150:        "FINANCIAL_LEDGER.md created successfully"
+
+--- lab5_goodhart.md ---
+NO REPOSITORY REFERENCE
+
+--- lab5_gqm.md ---
+NO REPOSITORY REFERENCE
+
+--- lab6_cfg_baseline.md ---
+NO REPOSITORY REFERENCE
+
+--- lab6_cfg_extended.md ---
+NO REPOSITORY REFERENCE
+
+--- privacy_inventory.md ---
+NO REPOSITORY REFERENCE
+
+--- requirements.txt ---
+quality_check.sh:8:pip-audit -r requirements.txt
+
+--- requirements_lab5.txt ---
+lab5_environment_check.sh:27:cat requirements_lab5.txt

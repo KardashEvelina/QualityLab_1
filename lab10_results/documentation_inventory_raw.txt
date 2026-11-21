@@ -1,0 +1,15 @@
+.github/workflows/lab7-quality-metrics.yml
+FINANCIAL_LEDGER.md
+lab5_goodhart.md
+lab5_gqm.md
+lab6_cfg_baseline.md
+lab6_cfg_extended.md
+lab8_results/god_object_baseline_metrics.txt
+lab8_results/mood_sonar_support.txt
+lab8_results/pass_wmc.txt
+lab9_results/FPA_UCP_WORKSHEET.md
+lab9_results/SQALE_AUDIT_LEDGER.md
+lab9_results/task3_git_history.txt
+privacy_inventory.md
+requirements.txt
+requirements_lab5.txt
