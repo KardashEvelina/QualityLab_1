@@ -193,3 +193,9 @@ Flask Web API, Task Service, Privacy Data Service, Consent Service та External
 ISD визначає, де та в якому середовищі ці компоненти виконуються.
 
 STATUS: ISD CREATED
+
+## 12. System Information Endpoint
+
+GET /api/system/info використовується для перевірки поточної версії сервісу та його активного стану.
+
+Поточна API version: 2.0.

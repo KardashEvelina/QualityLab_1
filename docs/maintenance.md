@@ -35,4 +35,6 @@
 4. Чи змінено deployment або CI/CD?
 5. Якщо так — чи оновлена відповідна документація?
 
+Last documentation restoration: 2026-11-21
+
 STATUS: DOCUMENTATION MAINTENANCE REGIME ACTIVE

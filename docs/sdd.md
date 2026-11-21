@@ -145,3 +145,14 @@ erDiagram
         string status
     }
 ```
+
+### GET /api/system/info
+
+Призначення: повернення службової інформації про поточну версію API.
+
+HTTP status: 200.
+
+Response fields:
+- service;
+- api_version;
+- status.

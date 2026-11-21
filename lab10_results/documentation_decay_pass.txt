@@ -1,0 +1,15 @@
+===== DOCUMENTATION DECAY RESTORATION =====
+
+Endpoint:
+367:    "/api/system/info",
+
+README:
+107:### GET /api/system/info
+
+SDD:
+149:### GET /api/system/info
+
+ISD:
+199:GET /api/system/info використовується для перевірки поточної версії сервісу та його активного стану.
+
+STATUS: DOCUMENTATION CURRENCY RESTORED / PASS

@@ -103,3 +103,10 @@ radon cc . -s
 5. Запустити проєкт та тести локально.
 
 STATUS: PROJECT DOCUMENTATION ENTRY POINT
+
+### GET /api/system/info
+
+Повертає службову інформацію про систему.
+
+Приклад відповіді:
+{"service":"QualityLab_1","api_version":"2.0","status":"active"}
