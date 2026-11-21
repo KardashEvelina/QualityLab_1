@@ -1,0 +1,40 @@
+===== DOCUMENTATION DECAY FAIL =====
+
+CODE:
+367:    "/api/system/info",
+
+README:
+ENDPOINT NOT DOCUMENTED
+
+SDD:
+ENDPOINT NOT DOCUMENTED
+
+ISD:
+ENDPOINT NOT DOCUMENTED
+
+===== CODE DIFF =====
+diff --git a/app.py b/app.py
+index 565e6f2..38a468f 100644
+--- a/app.py
++++ b/app.py
+@@ -363,6 +363,18 @@ def optional_action(user_id, purpose):
+     return jsonify(result), status_code
+ 
+ 
++@app.route(
++    "/api/system/info",
++    methods=["GET"]
++)
++def system_info():
++    return jsonify({
++        "service": "QualityLab_1",
++        "api_version": "2.0",
++        "status": "active"
++    }), 200
++
++
+ if __name__ == "__main__":
+     app.run(
+         host="127.0.0.1",
+
+STATUS: DOCUMENTATION DECAY / FAIL
