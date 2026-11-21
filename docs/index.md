@@ -33,7 +33,3 @@ review_date: 2027-02-19
 - [[handover|Handover]]
 
 #architecture #api #ops
-
-## Crash Test
-
-[Broken documentation reference](missing-page.md)
