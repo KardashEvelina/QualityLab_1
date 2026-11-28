@@ -48,7 +48,7 @@ Deadline:
 
 Status:
 
-Planned
+Implemented
 
 ## Effectiveness Check
 
