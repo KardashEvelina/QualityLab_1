@@ -1,0 +1,120 @@
+version: "1.0"
+
+service:
+  name: QualityLab_1
+  owner: SRE Owner
+  measurement_window: 30 days
+  window_minutes: 43200
+  measurement_source: modeled
+  measurement_note: >
+    У поточному навчальному контурі постійний Prometheus/Grafana monitoring
+    не розгорнуто, тому використовуються модельні цільові значення,
+    сформовані на основі доступних health checks та HTTP-відповідей.
+
+sli:
+
+  - id: SLI-001
+    name: API Availability
+    description: >
+      Частка успішних HTTP-запитів до API з кодами 2xx
+      від загальної кількості HTTP-запитів за 30 днів.
+    formula: successful_2xx_requests / total_requests * 100
+    slo_percent: 99.5
+    sla_percent: 99.0
+    error_budget_percent: 0.5
+    error_budget_minutes: 216
+    justification: >
+      Внутрішня ціль SLO встановлена вище зовнішньої SLA,
+      щоб команда мала буфер надійності для технічних робіт
+      та контрольованих збоїв.
+
+  - id: SLI-002
+    name: API Latency
+    description: >
+      Частка хвилин у 30-денному вікні, протягом яких
+      p95 latency API залишається меншою за 300 мс.
+    formula: compliant_latency_minutes / total_window_minutes * 100
+    target_latency_ms: 300
+    percentile: p95
+    slo_percent: 99.0
+    sla_percent: 98.0
+    error_budget_percent: 1.0
+    error_budget_minutes: 432
+    justification: >
+      Внутрішня ціль забезпечує резерв між очікуваним рівнем
+      продуктивності та зовнішньою обіцянкою клієнту.
+
+  - id: SLI-003
+    name: Health Check Reliability
+    description: >
+      Частка хвилин у 30-денному вікні, протягом яких
+      GET /health успішно повертає HTTP 200 та status=ok.
+    formula: successful_health_minutes / total_window_minutes * 100
+    endpoint: /health
+    expected_http_status: 200
+    expected_status: ok
+    slo_percent: 99.9
+    sla_percent: 99.5
+    error_budget_percent: 0.1
+    error_budget_minutes: 43.2
+    justification: >
+      Health endpoint є основним індикатором доступності сервісу,
+      тому для нього встановлено найвищу внутрішню ціль.
+
+error_budget:
+
+  measurement_window_days: 30
+  calendar_minutes: 43200
+
+  calculation_rule: >
+    Error Budget = (100% - SLO) * календарний час вікна.
+
+  calculations:
+
+    SLI-001:
+      slo: 99.5
+      calculation: "0.5% * 43200"
+      error_budget_minutes: 216
+
+    SLI-002:
+      slo: 99.0
+      calculation: "1.0% * 43200"
+      error_budget_minutes: 432
+
+    SLI-003:
+      slo: 99.9
+      calculation: "0.1% * 43200"
+      error_budget_minutes: 43.2
+
+error_budget_policy:
+
+  normal:
+    condition: "Consumed error budget < 50%"
+    action: >
+      Релізи та планові зміни дозволені за стандартним
+      Change Management процесом.
+
+  warning:
+    condition: "Consumed error budget >= 50% and < 100%"
+    action: >
+      Підвищити пріоритет reliability-задач,
+      посилити monitoring та переглядати ризикові зміни через CCB.
+
+  exhausted:
+    condition: "Consumed error budget >= 100%"
+    action: >
+      Оголосити change freeze.
+      Призупинити функціональні релізи.
+      Дозволяти лише зміни, спрямовані на стабільність,
+      усунення інцидентів та зменшення технічного ризику.
+
+  release_resume:
+    condition: >
+      Reliability metrics повернулися у межі SLO
+      та CCB дозволив відновлення релізів.
+    action: >
+      Зняти change freeze і повернутися
+      до стандартного процесу релізів.
+
+status: published
+review_date: 2027-02-19
